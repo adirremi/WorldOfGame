@@ -1,0 +1,38 @@
+
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout-hub') {
+            steps {
+            sh '''#!/bin/bash
+cd \'/Users/adirremi/PycharmProjects/WorldOfGames/\'
+docker pull adirremi/flask-web
+pwd'''
+
+
+            }
+        }
+         stage('docker-compose up') {
+            steps {
+               sh '''cd \'/Users/adirremi/PycharmProjects/WorldOfGames/\'
+               pwd
+               docker-compose up&'''
+            }
+         }
+         stage('run test') {
+            steps {
+               sh '''cd \'/Users/adirremi/PycharmProjects/WorldOfGames/\'
+               python test.py'''
+            }
+        }
+
+        stage("docker-compose-push"){
+            steps{
+                sh '''cd \'/Users/adirremi/PycharmProjects/WorldOfGames/\'
+                docker-compose push
+                docker-compose down'''
+            }
+        }
+    }
+}

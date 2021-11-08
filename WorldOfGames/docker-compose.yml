@@ -1,0 +1,15 @@
+version: "3.9"
+services:
+  Myapp:
+    build: .
+    ports:
+      - "8777:8777"
+    image: adirremi/flask-web  # goes to local registry      
+    volumes:
+      - /Users/adirremi/PycharmProjects/WorldOfGames/:/app
+
+
+
+      
+  
+    

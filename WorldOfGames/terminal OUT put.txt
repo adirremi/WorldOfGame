@@ -1,0 +1,51 @@
+(base) adirremi@Adirs-MacBook-Pro WorldOfGames % docker-compose up
+Building Myapp
+[+] Building 8.0s (11/11) FINISHED
+ => [internal] load build definition from Dockerfile                                                                                                                                        0.0s
+ => => transferring dockerfile: 452B                                                                                                                                                        0.0s
+ => [internal] load .dockerignore                                                                                                                                                           0.0s
+ => => transferring context: 2B                                                                                                                                                             0.0s
+ => [internal] load metadata for docker.io/library/python:alpine3.14                                                                                                                        2.0s
+ => [auth] library/python:pull token for registry-1.docker.io                                                                                                                               0.0s
+ => [internal] load build context                                                                                                                                                           0.0s
+ => => transferring context: 3.69kB                                                                                                                                                         0.0s
+ => CACHED [1/5] FROM docker.io/library/python:alpine3.14@sha256:ab08dd9e48afe4cf629d993a41dccf0a74ae08f556b25cb143d8de37b25e1525                                                           0.0s
+ => [2/5] COPY . /app                                                                                                                                                                       0.0s
+ => [3/5] WORKDIR /app                                                                                                                                                                      0.0s
+ => [4/5] RUN pip install flask                                                                                                                                                             3.6s
+ => [5/5] RUN pip install requests                                                                                                                                                          2.2s
+ => exporting to image                                                                                                                                                                      0.1s
+ => => exporting layers                                                                                                                                                                     0.1s
+ => => writing image sha256:e1bc5d32b3f4b221ec541c8a05e2438f07be5a8088c8feaec24feb1999eb7a53                                                                                                0.0s
+ => => naming to docker.io/adirremi/flask-web                                                                                                                                               0.0s
+WARNING: Image for service Myapp was built because it did not already exist. To rebuild this image you must use `docker-compose build` or `docker-compose up --build`.
+Creating worldofgames_Myapp_1 ... done
+Attaching to worldofgames_Myapp_1
+Myapp_1  |  * Serving Flask app 'MainScore' (lazy loading)
+Myapp_1  |  * Environment: production
+Myapp_1  |    WARNING: This is a development server. Do not use it in a production deployment.
+Myapp_1  |    Use a production WSGI server instead.
+Myapp_1  |  * Debug mode: on
+Myapp_1  |  * Running on all addresses.
+Myapp_1  |    WARNING: This is a development server. Do not use it in a production deployment.
+Myapp_1  |  * Running on http://172.18.0.2:8777/ (Press CTRL+C to quit)
+Myapp_1  | 172.18.0.1 - - [08/Nov/2021 12:51:17] "GET /ScoreFlask HTTP/1.1" 200 -
+Myapp_1  | 172.18.0.1 - - [08/Nov/2021 12:51:17] "GET /favicon.ico HTTP/1.1" 404 -
+^CGracefully stopping... (press Ctrl+C again to force)
+Stopping worldofgames_Myapp_1 ... done
+(base) adirremi@Adirs-MacBook-Pro WorldOfGames % docker-compose push
+Pushing Myapp (adirremi/flask-web:latest)...
+The push refers to repository [docker.io/adirremi/flask-web]
+a0a12dbdf085: Pushed
+3617fbf8fabc: Pushed
+5f70bf18a086: Mounted from adirremi/flask-get-user
+5341e1084b99: Pushed
+37359b695f72: Mounted from library/python
+1d1a5044439d: Mounted from library/python
+ac083f861358: Mounted from library/python
+340f4d63afd7: Mounted from adirremi/flask-get-user
+ee420dfed78a: Mounted from adirremi/flask-get-user
+latest: digest: sha256:6521ebdee96840747c9cd55d096d7e0f8efadd42155297e69df064ce8a3a3aec size: 2205
+(base) adirremi@Adirs-MacBook-Pro WorldOfGames %
+
+

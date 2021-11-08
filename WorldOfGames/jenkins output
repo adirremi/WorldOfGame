@@ -1,0 +1,56 @@
+Started by user adirremi
+Running in Durability level: MAX_SURVIVABILITY
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /Users/adirremi/.jenkins/workspace/my-app
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (checkout-hub)
+[Pipeline] sh
+Using default tag: latest
+latest: Pulling from adirremi/flask-web
+Digest: sha256:6521ebdee96840747c9cd55d096d7e0f8efadd42155297e69df064ce8a3a3aec
+Status: Image is up to date for adirremi/flask-web:latest
+docker.io/adirremi/flask-web:latest
+/Users/adirremi/PycharmProjects/WorldOfGames
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (docker-compose up)
+[Pipeline] sh
++ cd /Users/adirremi/PycharmProjects/WorldOfGames/
++ pwd
+/Users/adirremi/PycharmProjects/WorldOfGames
++ docker-compose up
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (run test)
+[Pipeline] sh
++ cd /Users/adirremi/PycharmProjects/WorldOfGames/
++ python test.py
+test part is starting
+test is start
+all good
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] stage
+[Pipeline] { (docker-compose-push)
+[Pipeline] sh
++ cd /Users/adirremi/PycharmProjects/WorldOfGames/
++ docker-compose push
+Pushing Myapp (adirremi/flask-web:latest)...
+The push refers to repository [docker.io/adirremi/flask-web]
+latest: digest: sha256:6521ebdee96840747c9cd55d096d7e0f8efadd42155297e69df064ce8a3a3aec size: 2205
++ docker-compose down
+Stopping worldofgames_Myapp_1 ...
+Stopping worldofgames_Myapp_1 ... done
+Removing worldofgames_Myapp_1 ...
+Removing worldofgames_Myapp_1 ... done
+Removing network worldofgames_default
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
